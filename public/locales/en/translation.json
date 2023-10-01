@@ -1,0 +1,52 @@
+{
+    "register":{
+        "register":"Register",
+        "title":"ToDo online platform",
+        "password":"Password",
+        "repeatpassword":"Repeat Password",
+        "intro":"Wellcome to the online ToDo platform",
+        "mobile":"Mobile",
+        "signin":"Sign In",
+        "saving":"Saving...",
+        "success":"Registered successfully",
+
+        "alreadyRegistered":"Already Registered?:)",
+        "validation":{
+            "mobileRequired":"Mobile is required",
+            "passwordRequired":"Password is required",
+            "repeatPasswordRequired":"Repeat Password Is Required",
+            "mobileLength":"Mobile must be 11 numbers",
+            "notMatch":"Your passwords dont match",
+            "passwordLength":"Atleast 6 digits"
+        }
+    },
+    "login":{
+        "title":"ToDo Online Platform",
+        "intro":"To enter you need to enter your informations down here:",
+        "notAlreadyRegistered":"Not already a member?:(",
+        "signup":"Sign Up",
+        "enter":"Enter",
+        "entering":"Entering...",
+        "success":"Entering was successfull"
+    },
+    "mainLayOut":{
+        "allboards":"All Boards",
+        "boards-category":"Managing tasks",
+        "manage":"Managing your boards",
+        "title":"ToDo Online Platform",
+        "acc-manage":"Managing your account",
+        "exit":"Exit",
+        "clean":"Clean all"
+    },
+    "initPage":{
+        "title":"Thank you for choosing our platform to do your schedule"
+    },
+ "tasks":{
+    "addTask":"Add your task",
+    "taskLabel":"Write your task below:",
+    "placeHolder":"Buy breakfast",
+    "done":"Done",
+    "edit":"Edit",
+    "remove":"Remove"
+ }
+}
