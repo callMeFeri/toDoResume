@@ -86,6 +86,7 @@ export const TaskForm = ({ board, idBoard }) => {
                         <>
                           <p>{content}</p>
                           <select
+                            style={{ height: "20px" }}
                             value={board}
                             onChange={(e) =>
                               changePlace({ id: id, type: e.target.value })
@@ -99,7 +100,7 @@ export const TaskForm = ({ board, idBoard }) => {
                             <img
                               src={editLogo}
                               alt={t("tasks.edit")}
-                              style={{ height: "20px", width: "20px" }}
+                              style={{ height: "15px", width: "20px" }}
                               onClick={() => {
                                 edit(id);
                                 setValue(content);
@@ -111,7 +112,7 @@ export const TaskForm = ({ board, idBoard }) => {
                             <img
                               src={removeLogo}
                               alt={t("tasks.remove")}
-                              style={{ height: "20px", width: "20px" }}
+                              style={{ height: "15px", width: "20px" }}
                               onClick={() => remove(id)}
                             />
                           </a>

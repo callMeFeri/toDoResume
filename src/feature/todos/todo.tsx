@@ -4,13 +4,6 @@ import { TaskForm } from "./forms/taskForm";
 export const ToDo = () => {
   const { state, addBoard } = useGlobalContext();
   const { t } = useTranslation();
-  type info = {
-    target: {
-      board: {
-        value: string;
-      };
-    };
-  };
 
   return (
     <>
