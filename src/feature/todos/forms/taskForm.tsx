@@ -43,7 +43,7 @@ export const TaskForm = ({ board, idBoard }) => {
               <br />
               <button
                 type="button"
-                style={{ backgroundColor: "red ", width: "auto" }}
+                style={{ backgroundColor: "red ", width: "200px" }}
                 className="btn btn-lg btn-primary "
                 onClick={() => removeBoard(idBoard)}
               >
