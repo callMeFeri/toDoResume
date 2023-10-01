@@ -62,34 +62,40 @@ export const AppProvider = ({ children }: child) => {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(state));
   }, [state]);
-  const changeLanguage = (language: "pe" | "en"): void => {
+  const changeLanguage = (language: "pe" | "en") => {
     dispatch({ type: "CHANGE-LANGUAGE", language: language });
   };
   const showSideBar = (): void => {
     dispatch({ type: "SHOW-SIDEBAR" });
   };
-  const addTask = ({ content, category }) => {
+  const addTask = ({
+    content,
+    category,
+  }: {
+    content: string;
+    category: string;
+  }) => {
     dispatch({ type: "ADD_TASK", content: content, category: category });
   };
-  const remove = (id) => {
+  const remove = (id: string) => {
     dispatch({ type: "REMOVE", id: id });
   };
-  const removeBoard = (idBoard) => {
+  const removeBoard = (idBoard: string) => {
     dispatch({ type: "REMOVE-BOARD", id: idBoard });
   };
   const edit = (id) => {
     dispatch({ type: "EDIT", id: id });
   };
-  const editDone = ({ id, content }) => {
+  const editDone = ({ id, content }: { id: string; content: string }) => {
     dispatch({ type: "EDIT-DONE", id: id, content: content });
   };
   const clean = () => {
     dispatch({ type: "CLEAN" });
   };
-  const changePlace = ({ id, type }) => {
+  const changePlace = ({ id, type }: { id: string; type: string }) => {
     dispatch({ type: "CHANGE-PLACE", id: id, newType: type });
   };
-  const changeComponent = (cmp) => {
+  const changeComponent = (cmp: string) => {
     dispatch({ type: "CHANGE-COMPONENT", add: cmp });
   };
   const addBoard = (text) => {

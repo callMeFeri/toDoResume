@@ -85,16 +85,16 @@ export const TaskForm = ({ board, idBoard }) => {
                       ) : (
                         <>
                           <p>{content}</p>
-                          {/* <select
+                          <select
                             value={board}
                             onChange={(e) =>
                               changePlace({ id: id, type: e.target.value })
                             }
                           >
                             {state.boards.map((item) => {
-                              return <option>{item.content}</option>;
+                              return <option>{item.title}</option>;
                             })}
-                          </select> */}
+                          </select>
                           <a>
                             <img
                               src={editLogo}
