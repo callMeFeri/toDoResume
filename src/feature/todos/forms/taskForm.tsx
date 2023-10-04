@@ -74,7 +74,10 @@ export const TaskForm = ({ board, idBoard }) => {
                               <img
                                 src={doneLogo}
                                 alt={t("tasks.done")}
-                                style={{ height: "20px", width: "20px" }}
+                                style={{
+                                  height: "20px",
+                                  width: "20px",
+                                }}
                                 onClick={() => {
                                   editDone({ id: id, content: value });
                                 }}
@@ -91,7 +94,11 @@ export const TaskForm = ({ board, idBoard }) => {
                               <img
                                 src={editLogo}
                                 alt={t("tasks.edit")}
-                                style={{ height: "15px", width: "20px" }}
+                                style={{
+                                  height: "15px",
+                                  width: "20px",
+                                  padding: 2,
+                                }}
                                 onClick={() => {
                                   edit(id);
                                   setValue(content);
