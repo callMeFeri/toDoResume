@@ -84,7 +84,31 @@ export const TaskForm = ({ board, idBoard }) => {
                         </>
                       ) : (
                         <>
-                          <p>{content}</p>
+                          <div>
+                            <p>{content}</p>
+                            <input type="checkbox" />
+                            <a>
+                              <img
+                                src={editLogo}
+                                alt={t("tasks.edit")}
+                                style={{ height: "15px", width: "20px" }}
+                                onClick={() => {
+                                  edit(id);
+                                  setValue(content);
+                                }}
+                              />
+                            </a>
+
+                            <a>
+                              <img
+                                src={removeLogo}
+                                alt={t("tasks.remove")}
+                                style={{ height: "15px", width: "20px" }}
+                                onClick={() => remove(id)}
+                              />
+                            </a>
+                          </div>
+
                           {state.boards.length > 1 ? (
                             <select
                               style={{ height: "20px" }}
@@ -100,27 +124,6 @@ export const TaskForm = ({ board, idBoard }) => {
                           ) : (
                             ""
                           )}
-
-                          <a>
-                            <img
-                              src={editLogo}
-                              alt={t("tasks.edit")}
-                              style={{ height: "15px", width: "20px" }}
-                              onClick={() => {
-                                edit(id);
-                                setValue(content);
-                              }}
-                            />
-                          </a>
-
-                          <a>
-                            <img
-                              src={removeLogo}
-                              alt={t("tasks.remove")}
-                              style={{ height: "15px", width: "20px" }}
-                              onClick={() => remove(id)}
-                            />
-                          </a>
                         </>
                       )}
                     </li>
