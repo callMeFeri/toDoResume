@@ -87,9 +87,10 @@ export const TaskForm = ({ board, idBoard }) => {
                         </>
                       ) : (
                         <>
-                          <div>
-                            <p>{content}</p>
+                          <div className="d-flex">
                             <input type="checkbox" />
+                            <p>{content}</p>
+
                             <a>
                               <img
                                 src={editLogo}
@@ -97,7 +98,6 @@ export const TaskForm = ({ board, idBoard }) => {
                                 style={{
                                   height: "15px",
                                   width: "20px",
-                                  padding: 2,
                                 }}
                                 onClick={() => {
                                   edit(id);
