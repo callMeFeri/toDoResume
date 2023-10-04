@@ -9,7 +9,7 @@ export const Boards = () => {
         {state.boards ? (
           <div>
             <h1>Hi</h1>
-            {state.boards.map((board) => (
+            {state.boards.map((board: { id: string; title: string }) => (
               <li key={board.id}>{board.title}</li>
             ))}
           </div>

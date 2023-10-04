@@ -9,7 +9,6 @@
         "signin":"Sign In",
         "saving":"Saving...",
         "success":"Registered successfully",
-
         "alreadyRegistered":"Already Registered?:)",
         "validation":{
             "mobileRequired":"Mobile is required",
@@ -22,7 +21,7 @@
     },
     "login":{
         "title":"ToDo Online Platform",
-        "intro":"To enter you need to enter your informations down here:",
+        "intro":"To enter, you need to enter your informations down here:",
         "notAlreadyRegistered":"Not already a member?:(",
         "signup":"Sign Up",
         "enter":"Enter",

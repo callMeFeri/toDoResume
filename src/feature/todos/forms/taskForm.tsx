@@ -85,17 +85,22 @@ export const TaskForm = ({ board, idBoard }) => {
                       ) : (
                         <>
                           <p>{content}</p>
-                          <select
-                            style={{ height: "20px" }}
-                            value={board}
-                            onChange={(e) =>
-                              changePlace({ id: id, type: e.target.value })
-                            }
-                          >
-                            {state.boards.map((item) => {
-                              return <option>{item.title}</option>;
-                            })}
-                          </select>
+                          {state.boards.length > 1 ? (
+                            <select
+                              style={{ height: "20px" }}
+                              value={board}
+                              onChange={(e) =>
+                                changePlace({ id: id, type: e.target.value })
+                              }
+                            >
+                              {state.boards.map((item: { title: string }) => {
+                                return <option>{item.title}</option>;
+                              })}
+                            </select>
+                          ) : (
+                            ""
+                          )}
+
                           <a>
                             <img
                               src={editLogo}
