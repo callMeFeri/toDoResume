@@ -47,5 +47,8 @@
     "done":"Done",
     "edit":"Edit",
     "remove":"Remove"
+ },
+ "allBoards":{
+    "hi":"Hi There Boss!"
  }
 }

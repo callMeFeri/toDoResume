@@ -6,6 +6,18 @@ import editLogo from "../../../assets/images/edit+options+pen+pencil+tool+write+
 import doneLogo from "../../../assets/images/checkmark+circle+complete+done+filled+ok+icon-1320184293398883601.svg";
 import removeLogo from "../../../assets/images/remove+circle+24px-131985190467137446.svg";
 
+// type Sub = {
+//   content: {
+//     e: {
+//       target: {
+//         task: {
+//           value: string;
+//         };
+//       };
+//     };
+//     category: string;
+//   };
+// };
 export const TaskForm = ({ board, idBoard }) => {
   const { state, addTask, edit, editDone, remove, removeBoard, changePlace } =
     useGlobalContext();
