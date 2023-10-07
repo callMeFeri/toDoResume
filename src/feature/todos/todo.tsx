@@ -38,7 +38,7 @@ export const ToDo = () => {
         <ol>
           {state.boards
             ? state.boards.map((board: string) => {
-                const { title, id } = board;
+                const { title, id }: { title: string; id: string } = board;
                 return (
                   <div>
                     <hr />
