@@ -14,14 +14,10 @@ type initState = {
   boards: string[];
   component: string;
   coloumns?: string[];
-  task: [
-    {
-      // category: string;
-      // content: string;
-      // isEditing: boolean;
-      // id: string;
-    }
-  ];
+  task: []; // category: string;
+  // content: string;
+  // isEditing: boolean;
+  // id: string;];
 };
 
 type child = {
@@ -29,22 +25,23 @@ type child = {
 };
 const loader = (section: string) => {
   const loadingInfo = JSON.parse(localStorage.getItem("tasks"));
-  if (!loadingInfo) {
+  if (loadingInfo) {
     if (section === "boards") {
-      return [(id = ""), (title = "")];
+      return loadingInfo.boards;
     }
-    if (section === "task") {
-      return [(content = ""), (isEditing = false), (category = ""), (id = "")];
+    if (section === "tasks") {
+      return loadingInfo.task;
     }
+    return [];
   }
 };
 export const AppContext = createContext();
-const initialState: initState = {
+let initialState: initState = {
   language: localStorage.getItem("language") || "pe",
   showSideBar: true,
   boards: loader("boards"),
   component: "/",
-  task: loader("tasks"),
+  task: [], // loader("tasks"),
 };
 
 export const AppProvider = ({ children }: child) => {
