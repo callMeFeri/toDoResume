@@ -30,13 +30,12 @@ type child = {
 const loader = (section: string) => {
   const loadingInfo = JSON.parse(localStorage.getItem("tasks"));
   if (!loadingInfo) {
-    return (loadingInfo.boards = []), (loadingInfo.task = [{}]);
-  }
-  if (section === "boards") {
-    return loadingInfo.boards;
-  }
-  if (section === "task") {
-    return loadingInfo.task;
+    if (section === "boards") {
+      return [];
+    }
+    if (section === "task") {
+      return [];
+    }
   }
 };
 export const AppContext = createContext();
@@ -45,7 +44,7 @@ const initialState: initState = {
   showSideBar: true,
   boards: loader("boards"),
   component: "/",
-  task: loader("task"),
+  task: loader("tasks"),
 };
 
 export const AppProvider = ({ children }: child) => {
