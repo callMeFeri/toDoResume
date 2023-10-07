@@ -31,10 +31,10 @@ const loader = (section: string) => {
   const loadingInfo = JSON.parse(localStorage.getItem("tasks"));
   if (!loadingInfo) {
     if (section === "boards") {
-      return [];
+      return [(id = ""), (title = "")];
     }
     if (section === "task") {
-      return [];
+      return [(content = ""), (isEditing = false), (category = ""), (id = "")];
     }
   }
 };

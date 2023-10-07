@@ -36,18 +36,20 @@ export const ToDo = () => {
       </div>
       <div>
         <ol>
-          {state.boards.map((board: string) => {
-            const { title, id } = board;
-            return (
-              <div>
-                <hr />
-                <li>
-                  <h3>{title}</h3>
-                  <TaskForm board={title} idBoard={id} />
-                </li>
-              </div>
-            );
-          })}
+          {state.boards
+            ? state.boards.map((board: string) => {
+                const { title, id } = board;
+                return (
+                  <div>
+                    <hr />
+                    <li>
+                      <h3>{title}</h3>
+                      <TaskForm board={title} idBoard={id} />
+                    </li>
+                  </div>
+                );
+              })
+            : ""}
         </ol>
       </div>
     </>
