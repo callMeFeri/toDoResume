@@ -5,19 +5,15 @@ import { useState } from "react";
 import editLogo from "../../../assets/images/edit+options+pen+pencil+tool+write+icon-1320162308955248227.svg";
 import doneLogo from "../../../assets/images/checkmark+circle+complete+done+filled+ok+icon-1320184293398883601.svg";
 import removeLogo from "../../../assets/images/remove+circle+24px-131985190467137446.svg";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
 
-// type Sub = {
-//   content: {
-//     e: {
-//       target: {
-//         task: {
-//           value: string;
-//         };
-//       };
-//     };
-//     category: string;
-//   };
-// };
+export const formStyle: CSSProperties = {
+  padding: 10,
+  borderRadius: "0px 9px 9px 0px",
+  backgroundImage:
+    "linear-gradient(to right, rgba(255,0,0,0), rgba(237, 231, 225))",
+};
 export const TaskForm = ({ board, idBoard }) => {
   const { state, addTask, edit, editDone, remove, removeBoard, changePlace } =
     useGlobalContext();
@@ -25,20 +21,18 @@ export const TaskForm = ({ board, idBoard }) => {
   const ref = useRef(null);
   const [value, setValue] = useState("");
   const divStyle: CSSProperties = {
-    // border: "solid",
-    // borderRadius: "5px",
-    // borderColor: "silver",
     padding: 5,
     borderRadius: "0px 9px 9px 0px",
-    // backgroundImage:""
     backgroundImage:
       "linear-gradient(to right, rgba(255,0,0,0), rgba(192,192,192))",
   };
+
   return (
     <div className="card">
       <div className="card-body">
         <div className="m-sm-4">
           <form
+            style={formStyle}
             onSubmit={(e) => {
               e.preventDefault();
               addTask({
@@ -58,18 +52,24 @@ export const TaskForm = ({ board, idBoard }) => {
             </div>
 
             <div className="text-center mt-3">
-              <button type="submit" className="btn btn-lg btn-primary">
+              <Button
+                variant="contained"
+                color="success"
+                type="submit"
+                size="large"
+              >
                 {t("tasks.addTask")}
-              </button>
+              </Button>
               <br />
-              <button
-                type="button"
-                style={{ backgroundColor: "red ", width: "200px" }}
-                className="btn btn-lg  "
+              <Button
+                variant="outlined"
+                color="error"
                 onClick={() => removeBoard(idBoard)}
+                size="large"
+                startIcon={<DeleteIcon />}
               >
                 {t("tasks.remove")}
-              </button>
+              </Button>
             </div>
             <ul>
               <div style={divStyle}>

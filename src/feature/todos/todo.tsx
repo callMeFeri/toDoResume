@@ -1,16 +1,18 @@
 import { useGlobalContext } from "../../context/context-state";
 import { useTranslation } from "react-i18next";
+import { formStyle } from "./forms/taskForm";
+
 import { TaskForm } from "./forms/taskForm";
 export const ToDo = () => {
   const { state, addBoard } = useGlobalContext();
   const { t } = useTranslation();
-
   return (
     <>
       <div className="card">
         <div className="card-body">
           <div className="m-sm-4">
             <form
+              style={formStyle}
               onSubmit={(e) => {
                 addBoard(e.target.board.value);
                 e.preventDefault();
