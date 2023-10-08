@@ -25,10 +25,11 @@ export const TaskForm = ({ board, idBoard }) => {
   const ref = useRef(null);
   const [value, setValue] = useState("");
   const divStyle: CSSProperties = {
-    border: "solid",
-    borderRadius: "5px",
-    borderColor: "silver",
+    // border: "solid",
+    // borderRadius: "5px",
+    // borderColor: "silver",
     padding: 5,
+    borderRadius: "0px 9px 9px 0px",
     // backgroundImage:""
     backgroundImage:
       "linear-gradient(to right, rgba(255,0,0,0), rgba(192,192,192))",
@@ -71,111 +72,120 @@ export const TaskForm = ({ board, idBoard }) => {
               </button>
             </div>
             <ul>
-              {state.task
-                ? state.task.map(
-                    (item: {
-                      content: string;
-                      category: string;
-                      id: string;
-                      isEditing: boolean;
-                    }) => {
-                      const { content, category, id, isEditing } = item;
-                      if (category === board) {
-                        return (
-                          <div style={divStyle}>
-                            <li>
-                              {isEditing ? (
-                                <>
-                                  <form
-                                    onSubmit={(e) => {
-                                      e.preventDefault();
-                                      editDone({ id: id, content: value });
-                                    }}
-                                  >
-                                    <input
-                                      type="text"
-                                      value={value}
-                                      onChange={(e) => setValue(e.target.value)}
-                                      className={`form-control form-control-lg `}
-                                    />
-                                    <a>
-                                      <img
-                                        src={doneLogo}
-                                        alt={t("tasks.done")}
-                                        style={{
-                                          height: "20px",
-                                          width: "20px",
-                                        }}
-                                        onClick={() => {
-                                          editDone({ id: id, content: value });
-                                        }}
-                                      />
-                                    </a>
-                                  </form>
-                                </>
-                              ) : (
-                                <>
-                                  <div className="d-flex">
-                                    <input type="checkbox" />
-                                    <p>{content}</p>
-
-                                    <a>
-                                      <img
-                                        src={editLogo}
-                                        alt={t("tasks.edit")}
-                                        style={{
-                                          height: "15px",
-                                          width: "20px",
-                                        }}
-                                        onClick={() => {
-                                          edit(id);
-                                          setValue(content);
-                                        }}
-                                      />
-                                    </a>
-
-                                    <a>
-                                      <img
-                                        src={removeLogo}
-                                        alt={t("tasks.remove")}
-                                        style={{
-                                          height: "15px",
-                                          width: "20px",
-                                        }}
-                                        onClick={() => remove(id)}
-                                      />
-                                    </a>
-                                  </div>
-
-                                  {state.boards.length > 1 ? (
-                                    <select
-                                      style={{ height: "20px" }}
-                                      value={board}
-                                      onChange={(e) =>
-                                        changePlace({
-                                          id: id,
-                                          type: e.target.value,
-                                        })
-                                      }
+              <div style={divStyle}>
+                {state.task
+                  ? state.task.map(
+                      (item: {
+                        content: string;
+                        category: string;
+                        id: string;
+                        isEditing: boolean;
+                      }) => {
+                        const { content, category, id, isEditing } = item;
+                        if (category === board) {
+                          return (
+                            <div>
+                              <li>
+                                {isEditing ? (
+                                  <>
+                                    <form
+                                      onSubmit={(e) => {
+                                        e.preventDefault();
+                                        editDone({ id: id, content: value });
+                                      }}
                                     >
-                                      {state.boards.map(
-                                        (item: { title: string }) => {
-                                          return <option>{item.title}</option>;
+                                      <input
+                                        type="text"
+                                        value={value}
+                                        onChange={(e) =>
+                                          setValue(e.target.value)
                                         }
-                                      )}
-                                    </select>
-                                  ) : (
-                                    ""
-                                  )}
-                                </>
-                              )}
-                            </li>
-                          </div>
-                        );
+                                        className={`form-control form-control-lg `}
+                                      />
+                                      <a>
+                                        <img
+                                          src={doneLogo}
+                                          alt={t("tasks.done")}
+                                          style={{
+                                            height: "20px",
+                                            width: "20px",
+                                          }}
+                                          onClick={() => {
+                                            editDone({
+                                              id: id,
+                                              content: value,
+                                            });
+                                          }}
+                                        />
+                                      </a>
+                                    </form>
+                                  </>
+                                ) : (
+                                  <>
+                                    <div className="d-flex">
+                                      <input type="checkbox" />
+                                      <p>{content}</p>
+
+                                      <a>
+                                        <img
+                                          src={editLogo}
+                                          alt={t("tasks.edit")}
+                                          style={{
+                                            height: "15px",
+                                            width: "20px",
+                                          }}
+                                          onClick={() => {
+                                            edit(id);
+                                            setValue(content);
+                                          }}
+                                        />
+                                      </a>
+
+                                      <a>
+                                        <img
+                                          src={removeLogo}
+                                          alt={t("tasks.remove")}
+                                          style={{
+                                            height: "15px",
+                                            width: "20px",
+                                          }}
+                                          onClick={() => remove(id)}
+                                        />
+                                      </a>
+                                    </div>
+
+                                    {state.boards.length > 1 ? (
+                                      <select
+                                        style={{ height: "20px" }}
+                                        value={board}
+                                        onChange={(e) =>
+                                          changePlace({
+                                            id: id,
+                                            type: e.target.value,
+                                          })
+                                        }
+                                      >
+                                        {state.boards.map(
+                                          (item: { title: string }) => {
+                                            return (
+                                              <option>{item.title}</option>
+                                            );
+                                          }
+                                        )}
+                                      </select>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </>
+                                )}
+                              </li>
+                            </div>
+                          );
+                        }
                       }
-                    }
-                  )
-                : ""}
+                    )
+                  : ""}
+              </div>
             </ul>
           </form>
         </div>
