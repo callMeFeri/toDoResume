@@ -41,7 +41,7 @@ let initialState: initState = {
   showSideBar: true,
   boards: loader("boards"),
   component: "/",
-  task: [], // loader("tasks"),
+  task: loader("tasks"),
 };
 
 export const AppProvider = ({ children }: child) => {
