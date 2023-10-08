@@ -9,7 +9,7 @@ export const Sidebar = () => {
   const { t } = useTranslation();
   return (
     <nav className={`sidebar ${state.showSideBar ? " " : "collapsed"}`}>
-      <div className="sidebar-content">
+      <div>
         <a className="sidebar-brand d-flex flex-column align-items-center pt-0 mb-0">
           <img src={logo} style={{ height: "280px", width: "280px" }} />
           <p className="mb-0">{t("mainLayOut.title")}</p>

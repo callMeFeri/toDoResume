@@ -12,7 +12,7 @@ export const formStyle: CSSProperties = {
   padding: 10,
   borderRadius: "0px 9px 9px 0px",
   backgroundImage:
-    "linear-gradient(to right, rgba(255,0,0,0), rgba(237, 231, 225))",
+    "linear-gradient(to right, rgba(255,0,0,0), rgba(0, 0, 63,1))",
 };
 export const TaskForm = ({ board, idBoard }) => {
   const { state, addTask, edit, editDone, remove, removeBoard, changePlace } =
@@ -67,6 +67,7 @@ export const TaskForm = ({ board, idBoard }) => {
                 onClick={() => removeBoard(idBoard)}
                 size="large"
                 startIcon={<DeleteIcon />}
+                style={{ width: "175px" }}
               >
                 {t("tasks.remove")}
               </Button>
