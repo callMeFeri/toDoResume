@@ -38,7 +38,7 @@ const loader = (section: string) => {
     }
   }
   if (section === "boards") {
-    return [{}];
+    return [];
   }
   if (section === "tasks") {
     return [];
