@@ -12,7 +12,7 @@ export const formStyle: CSSProperties = {
   padding: 10,
   borderRadius: "0px 9px 9px 0px",
   backgroundImage:
-    "linear-gradient(to right, rgba(255,0,0,0), rgba(0, 0, 63,1))",
+    "linear-gradient(to right, rgba(255,0,0,0), rgba(0, 8, 0,1))",
 };
 export const TaskForm = ({ board, idBoard }) => {
   const { state, addTask, edit, editDone, remove, removeBoard, changePlace } =
