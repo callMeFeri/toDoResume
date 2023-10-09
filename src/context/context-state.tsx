@@ -7,6 +7,7 @@ import {
 } from "react";
 import { reducer } from "./context-reducer";
 import { useTranslation } from "react-i18next";
+import { Language } from "@material-ui/icons";
 
 type initState = {
   language: string;
@@ -23,15 +24,23 @@ type initState = {
 type child = {
   children: ReactNode;
 };
+const loadingInfo = JSON.parse(localStorage.getItem("tasks"));
+
 const loader = (section: string) => {
-  const loadingInfo = JSON.parse(localStorage.getItem("tasks"));
   if (loadingInfo) {
     if (section === "boards") {
+      console.log("hi");
+
       return loadingInfo.boards;
     }
     if (section === "tasks") {
       return loadingInfo.task;
     }
+  }
+  if (section === "boards") {
+    return [{}];
+  }
+  if (section === "tasks") {
     return [];
   }
 };
@@ -47,7 +56,10 @@ let initialState: initState = {
 export const AppProvider = ({ children }: child) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { i18n } = useTranslation();
-
+  const saveLocal = () => {
+    const { language, showSideBar, ...newState } = state;
+    return newState;
+  };
   useEffect(() => {
     i18n.changeLanguage(state.language);
     localStorage.setItem("language", state.language);
@@ -56,7 +68,7 @@ export const AppProvider = ({ children }: child) => {
       state.language === "pe" ? "right" : "left";
   }, [state.language]);
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(state));
+    localStorage.setItem("tasks", JSON.stringify(saveLocal()));
   }, [state]);
   const changeLanguage = (language: "pe" | "en") => {
     dispatch({ type: "CHANGE-LANGUAGE", language: language });
