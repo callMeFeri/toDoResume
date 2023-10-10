@@ -8,12 +8,12 @@ import removeLogo from "../../../assets/images/remove+circle+24px-13198519046713
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import { styled } from "@material-ui/core";
-
+import TextField from "@mui/material/TextField";
 export const formStyle: CSSProperties = {
   padding: 10,
   borderRadius: "0px 9px 9px 0px",
   backgroundImage:
-    "linear-gradient(to right, rgba(255,0,0,0), rgba(0, 8, 0,1))",
+    "linear-gradient(to right, rgba(255,0,0,0), rgba(192, 192, 192))",
 };
 export const TaskForm = ({ board, idBoard }) => {
   const {
@@ -33,7 +33,7 @@ export const TaskForm = ({ board, idBoard }) => {
     padding: 5,
     borderRadius: "0px 9px 9px 0px",
     backgroundImage:
-      "linear-gradient(to right, rgba(255,0,0,0), rgba(192,192,192))",
+      "linear-gradient(to right, rgba(255,0,0,0), rgba(200,200,200))",
   };
 
   return (
@@ -52,9 +52,10 @@ export const TaskForm = ({ board, idBoard }) => {
             }}
           >
             <div className="mb-3">
-              <label className="form-label">{t("tasks.taskLabel")}</label>
-              <input
-                className={`form-control form-control-lg `}
+              <TextField
+                fullWidth
+                label={t("tasks.taskLabel")}
+                variant="standard"
                 name="task"
                 ref={ref}
               />

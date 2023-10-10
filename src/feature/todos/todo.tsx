@@ -1,7 +1,8 @@
 import { useGlobalContext } from "../../context/context-state";
 import { useTranslation } from "react-i18next";
 import { formStyle } from "./forms/taskForm";
-
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import { TaskForm } from "./forms/taskForm";
 export const ToDo = () => {
   const { state, addBoard } = useGlobalContext();
@@ -19,11 +20,11 @@ export const ToDo = () => {
               }}
             >
               <div className="mb-3">
-                <label className="form-label">{t("tasks.taskLabel")}</label>
-                <input
-                  className={`form-control form-control-lg `}
-                  placeholder={t("tasks.placeHolder")}
+                <TextField
+                  fullWidth
+                  label={t("tasks.taskLabel")}
                   name="board"
+                  inputProps={{ inputProps: { dir: "rtl" } }}
                 />
               </div>
 

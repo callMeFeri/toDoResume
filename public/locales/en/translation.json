@@ -42,7 +42,7 @@
     },
  "tasks":{
     "addTask":"Add your task",
-    "taskLabel":"Write your task below:",
+    "taskLabel":"Write your task here",
     "placeHolder":"Buy breakfast",
     "done":"Done",
     "edit":"Edit",
