@@ -37,7 +37,7 @@ export const ToDo = () => {
                   style={{ paddingRight: 2, paddingLeft: 2 }}
                 />
                 <Fab
-                  size="medium"
+                  size="large"
                   color="secondary"
                   aria-label="add"
                   type="submit"

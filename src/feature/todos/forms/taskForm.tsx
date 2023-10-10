@@ -152,6 +152,11 @@ export const TaskForm = ({ board, idBoard }) => {
                                             id: id,
                                           })
                                         }
+                                        style={{
+                                          marginBottom: 15,
+                                          paddingLeft: 2,
+                                          paddingRight: 2,
+                                        }}
                                       />
                                       <p
                                         style={{
