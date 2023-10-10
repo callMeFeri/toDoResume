@@ -47,7 +47,6 @@ export const TaskForm = ({ board, idBoard }) => {
       onClick={() => removeBoard(idBoard)}
       size="large"
       startIcon={<DeleteIcon />}
-      style={{ width: "175px" }}
     >
       {t("tasks.remove")}
     </Button>,
