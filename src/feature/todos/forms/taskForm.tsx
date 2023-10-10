@@ -221,12 +221,6 @@ export const TaskForm = ({ board, idBoard }) => {
                                             <Select
                                               id={id}
                                               value={category}
-                                              onChange={(e) =>
-                                                changePlace({
-                                                  id: id,
-                                                  type: e.target.value,
-                                                })
-                                              }
                                               sx={{
                                                 maxHeight: "30px",
                                                 marginBottom: "8px",
@@ -237,6 +231,12 @@ export const TaskForm = ({ board, idBoard }) => {
                                                   return (
                                                     <>
                                                       <MenuItem
+                                                        onClick={(e) =>
+                                                          changePlace({
+                                                            id: id,
+                                                            type: item.title,
+                                                          })
+                                                        }
                                                         value={item.title}
                                                       >
                                                         {item.title}
