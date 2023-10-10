@@ -77,6 +77,10 @@ export const TaskForm = ({ board, idBoard }) => {
                 color="secondary"
                 aria-label="add"
                 type="submit"
+                sx={{
+                  maxHeight: "50px",
+                  maxWidth: "50px",
+                }}
               >
                 <AddIcon />
               </Fab>
@@ -84,6 +88,7 @@ export const TaskForm = ({ board, idBoard }) => {
                 aria-label="delete"
                 size="large"
                 onClick={() => removeBoard(idBoard)}
+                sx={{ marginBottom: 8 }}
               >
                 <DeleteIcon fontSize="inherit" />
               </IconButton>
