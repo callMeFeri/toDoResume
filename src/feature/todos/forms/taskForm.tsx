@@ -9,7 +9,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 export const formStyle: CSSProperties = {
   padding: 10,
   borderRadius: "0px 9px 9px 0px",
@@ -36,21 +39,6 @@ export const TaskForm = ({ board, idBoard }) => {
     backgroundImage:
       "linear-gradient(to right, rgba(255,0,0,0), rgba(200,200,200))",
   };
-  const buttons = [
-    <Button variant="contained" color="success" type="submit" size="large">
-      {t("tasks.addTask")}
-    </Button>,
-
-    <Button
-      variant="outlined"
-      color="error"
-      onClick={() => removeBoard(idBoard)}
-      size="large"
-      startIcon={<DeleteIcon />}
-    >
-      {t("tasks.remove")}
-    </Button>,
-  ];
 
   return (
     <div className="card">
@@ -67,30 +55,35 @@ export const TaskForm = ({ board, idBoard }) => {
               ref.current.value = "";
             }}
           >
-            <TextField
-              fullWidth
-              label={t("tasks.taskLabel")}
-              variant="standard"
-              name="task"
-              ref={ref}
-            />
-
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
+                minWidth: "40px",
                 "& > *": {
                   m: 1,
                 },
               }}
             >
-              <ButtonGroup
-                orientation="vertical"
-                aria-label="vertical contained button group"
-                variant="contained"
+              <TextField
+                fullWidth
+                label={t("tasks.taskLabel")}
+                variant="standard"
+                name="task"
+                ref={ref}
+              />
+              <Fab
+                size="medium"
+                color="secondary"
+                aria-label="add"
+                type="submit"
               >
-                {buttons}
-              </ButtonGroup>
+                <AddIcon>{t("tasks.addTask")}</AddIcon>
+              </Fab>
+              <IconButton aria-label="delete" size="large">
+                <DeleteIcon fontSize="inherit" />
+              </IconButton>
+              ,
             </Box>
 
             <ul>
