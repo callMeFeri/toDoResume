@@ -80,7 +80,11 @@ export const TaskForm = ({ board, idBoard }) => {
               >
                 <AddIcon>{t("tasks.addTask")}</AddIcon>
               </Fab>
-              <IconButton aria-label="delete" size="large">
+              <IconButton
+                aria-label="delete"
+                size="large"
+                onClick={() => removeBoard(idBoard)}
+              >
                 <DeleteIcon fontSize="inherit" />
               </IconButton>
               ,
