@@ -6,13 +6,15 @@ import editLogo from "../../../assets/images/edit+options+pen+pencil+tool+write+
 import doneLogo from "../../../assets/images/checkmark+circle+complete+done+filled+ok+icon-1320184293398883601.svg";
 import removeLogo from "../../../assets/images/remove+circle+24px-131985190467137446.svg";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import InputLabel from "@mui/material/InputLabel";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
 export const formStyle: CSSProperties = {
   padding: 10,
   borderRadius: "0px 9px 9px 0px",
@@ -197,24 +199,45 @@ export const TaskForm = ({ board, idBoard }) => {
                                     </div>
 
                                     {state.boards.length > 1 ? (
-                                      <select
-                                        style={{ height: "20px" }}
-                                        value={board}
-                                        onChange={(e) =>
-                                          changePlace({
-                                            id: id,
-                                            type: e.target.value,
-                                          })
-                                        }
-                                      >
-                                        {state.boards.map(
-                                          (item: { title: string }) => {
-                                            return (
-                                              <option>{item.title}</option>
-                                            );
-                                          }
-                                        )}
-                                      </select>
+                                      <>
+                                        <FormControl
+                                          variant="filled"
+                                          sx={{
+                                            minWidth: 100,
+                                          }}
+                                        >
+                                          <InputLabel
+                                            sx={{ fontSize: "small" }}
+                                          >
+                                            {category}
+                                          </InputLabel>
+                                          <Select
+                                            onChange={(e) =>
+                                              changePlace({
+                                                id: id,
+                                                type: e.target.value,
+                                              })
+                                            }
+                                            sx={{
+                                              maxHeight: "30px",
+                                            }}
+                                          >
+                                            {state.boards.map(
+                                              (item: { title: string }) => {
+                                                return (
+                                                  <>
+                                                    <MenuItem
+                                                      value={item.title}
+                                                    >
+                                                      {item.title}
+                                                    </MenuItem>
+                                                  </>
+                                                );
+                                              }
+                                            )}
+                                          </Select>
+                                        </FormControl>
+                                      </>
                                     ) : (
                                       ""
                                     )}
