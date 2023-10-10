@@ -228,6 +228,7 @@ export const TaskForm = ({ board, idBoard }) => {
                                             }
                                             sx={{
                                               maxHeight: "30px",
+                                              marginBottom: "8px",
                                             }}
                                           >
                                             {state.boards.map(
