@@ -24,7 +24,6 @@ export const ToDo = () => {
               <Box
                 sx={{
                   display: "flex",
-                  padding: 3,
                   "& > *": {
                     m: 1,
                   },
@@ -34,7 +33,7 @@ export const ToDo = () => {
                   fullWidth
                   label={t("tasks.taskLabel")}
                   name="board"
-                  inputProps={{ inputProps: { dir: "rtl" } }}
+                  style={{ paddingRight: 2, paddingLeft: 2 }}
                 />
                 <Fab
                   size="medium"
