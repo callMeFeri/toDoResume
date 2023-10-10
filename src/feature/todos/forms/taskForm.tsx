@@ -204,52 +204,54 @@ export const TaskForm = ({ board, idBoard }) => {
                                           onClick={() => remove(id)}
                                         />
                                       </a>
-                                    </div>
-
-                                    {state.boards.length > 1 ? (
-                                      <>
-                                        <FormControl
-                                          variant="filled"
-                                          sx={{
-                                            minWidth: 100,
-                                          }}
-                                        >
-                                          <InputLabel
-                                            sx={{ fontSize: "small" }}
-                                          >
-                                            {category}
-                                          </InputLabel>
-                                          <Select
-                                            onChange={(e) =>
-                                              changePlace({
-                                                id: id,
-                                                type: e.target.value,
-                                              })
-                                            }
+                                      {state.boards.length > 1 ? (
+                                        <>
+                                          <FormControl
+                                            variant="filled"
                                             sx={{
-                                              maxHeight: "30px",
-                                              marginBottom: "8px",
+                                              minWidth: 100,
                                             }}
                                           >
-                                            {state.boards.map(
-                                              (item: { title: string }) => {
-                                                return (
-                                                  <>
-                                                    <MenuItem
-                                                      value={item.title}
-                                                    >
-                                                      {item.title}
-                                                    </MenuItem>
-                                                  </>
-                                                );
+                                            <InputLabel
+                                              id={id}
+                                              sx={{ fontSize: "small" }}
+                                            >
+                                              {category}
+                                            </InputLabel>
+                                            <Select
+                                              id={id}
+                                              value={category}
+                                              onChange={(e) =>
+                                                changePlace({
+                                                  id: id,
+                                                  type: e.target.value,
+                                                })
                                               }
-                                            )}
-                                          </Select>
-                                        </FormControl>
-                                      </>
-                                    ) : (
-                                      ""
-                                    )}
+                                              sx={{
+                                                maxHeight: "30px",
+                                                marginBottom: "8px",
+                                              }}
+                                            >
+                                              {state.boards.map(
+                                                (item: { title: string }) => {
+                                                  return (
+                                                    <>
+                                                      <MenuItem
+                                                        value={item.title}
+                                                      >
+                                                        {item.title}
+                                                      </MenuItem>
+                                                    </>
+                                                  );
+                                                }
+                                              )}
+                                            </Select>
+                                          </FormControl>
+                                        </>
+                                      ) : (
+                                        ""
+                                      )}
+                                    </div>
                                   </>
                                 )}
                               </li>
