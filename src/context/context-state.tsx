@@ -109,6 +109,9 @@ export const AppProvider = ({ children }: child) => {
   const addBoard = (text) => {
     dispatch({ type: "ADD-BOARD", text: text });
   };
+  const handleCheck = ({ status, id }: { status: boolean; id: string }) => {
+    dispatch({ type: "CHECKED", status: status, id: id });
+  };
   return (
     <AppContext.Provider
       value={{
@@ -124,6 +127,7 @@ export const AppProvider = ({ children }: child) => {
         changeComponent,
         removeBoard,
         changePlace,
+        handleCheck,
       }}
     >
       {children}

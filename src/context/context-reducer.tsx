@@ -28,6 +28,7 @@ export const reducer = (state: [], action: action) => {
       id: new Date().getTime().toString(),
       content: action.content,
       isEditing: false,
+      isChecked: false,
     };
 
     return {
@@ -78,6 +79,13 @@ export const reducer = (state: [], action: action) => {
         item.category = action.newType;
       }
     });
+    return { ...state };
+  }
+  if (action.type === "CHECKED") {
+    const selectedItem = state.task.find((item) => item.id === action.id);
+    console.log(selectedItem);
+
+    selectedItem.isChecked = action.status;
     return { ...state };
   }
 };

@@ -7,6 +7,7 @@ import doneLogo from "../../../assets/images/checkmark+circle+complete+done+fill
 import removeLogo from "../../../assets/images/remove+circle+24px-131985190467137446.svg";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
+import { styled } from "@material-ui/core";
 
 export const formStyle: CSSProperties = {
   padding: 10,
@@ -15,8 +16,16 @@ export const formStyle: CSSProperties = {
     "linear-gradient(to right, rgba(255,0,0,0), rgba(0, 8, 0,1))",
 };
 export const TaskForm = ({ board, idBoard }) => {
-  const { state, addTask, edit, editDone, remove, removeBoard, changePlace } =
-    useGlobalContext();
+  const {
+    state,
+    addTask,
+    edit,
+    editDone,
+    remove,
+    removeBoard,
+    changePlace,
+    handleCheck,
+  } = useGlobalContext();
   const { t } = useTranslation();
   const ref = useRef(null);
   const [value, setValue] = useState("");
@@ -82,7 +91,8 @@ export const TaskForm = ({ board, idBoard }) => {
                         id: string;
                         isEditing: boolean;
                       }) => {
-                        const { content, category, id, isEditing } = item;
+                        const { content, category, id, isEditing, isChecked } =
+                          item;
                         if (category === board) {
                           return (
                             <div>
@@ -124,8 +134,25 @@ export const TaskForm = ({ board, idBoard }) => {
                                 ) : (
                                   <>
                                     <div className="d-flex">
-                                      <input type="checkbox" />
-                                      <p>{content}</p>
+                                      <input
+                                        type="checkbox"
+                                        checked={isChecked && true}
+                                        onClick={() =>
+                                          handleCheck({
+                                            status: !isChecked,
+                                            id: id,
+                                          })
+                                        }
+                                      />
+                                      <p
+                                        style={{
+                                          textDecoration: isChecked
+                                            ? " line-through"
+                                            : "",
+                                        }}
+                                      >
+                                        {content}
+                                      </p>
 
                                       <a>
                                         <img
