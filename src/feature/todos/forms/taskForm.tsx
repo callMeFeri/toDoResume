@@ -7,7 +7,8 @@ import doneLogo from "../../../assets/images/checkmark+circle+complete+done+fill
 import removeLogo from "../../../assets/images/remove+circle+24px-131985190467137446.svg";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
-import { styled } from "@material-ui/core";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 export const formStyle: CSSProperties = {
   padding: 10,
@@ -35,6 +36,22 @@ export const TaskForm = ({ board, idBoard }) => {
     backgroundImage:
       "linear-gradient(to right, rgba(255,0,0,0), rgba(200,200,200))",
   };
+  const buttons = [
+    <Button variant="contained" color="success" type="submit" size="large">
+      {t("tasks.addTask")}
+    </Button>,
+
+    <Button
+      variant="outlined"
+      color="error"
+      onClick={() => removeBoard(idBoard)}
+      size="large"
+      startIcon={<DeleteIcon />}
+      style={{ width: "175px" }}
+    >
+      {t("tasks.remove")}
+    </Button>,
+  ];
 
   return (
     <div className="card">
@@ -62,25 +79,23 @@ export const TaskForm = ({ board, idBoard }) => {
             </div>
 
             <div className="text-center mt-3">
-              <Button
-                variant="contained"
-                color="success"
-                type="submit"
-                size="large"
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  "& > *": {
+                    m: 1,
+                  },
+                }}
               >
-                {t("tasks.addTask")}
-              </Button>
-              <br />
-              <Button
-                variant="outlined"
-                color="error"
-                onClick={() => removeBoard(idBoard)}
-                size="large"
-                startIcon={<DeleteIcon />}
-                style={{ width: "175px" }}
-              >
-                {t("tasks.remove")}
-              </Button>
+                <ButtonGroup
+                  orientation="vertical"
+                  aria-label="vertical contained button group"
+                  variant="contained"
+                >
+                  {buttons}
+                </ButtonGroup>
+              </Box>
             </div>
             <ul>
               <div style={divStyle}>
