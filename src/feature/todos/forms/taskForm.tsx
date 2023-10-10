@@ -149,6 +149,9 @@ export const TaskForm = ({ board, idBoard }) => {
                                           textDecoration: isChecked
                                             ? " line-through"
                                             : "",
+                                          letterSpacing: "1px",
+                                          color: isChecked ? "red" : "black",
+                                          fontFamily: "OCR A Std, monospace",
                                         }}
                                       >
                                         {content}
