@@ -1,9 +1,12 @@
 import { useGlobalContext } from "../../context/context-state";
 import { useTranslation } from "react-i18next";
 import { formStyle } from "./forms/taskForm";
-import Box from "@mui/material/Box";
+import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 import { TaskForm } from "./forms/taskForm";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+
 export const ToDo = () => {
   const { state, addBoard } = useGlobalContext();
   const { t } = useTranslation();
@@ -19,20 +22,30 @@ export const ToDo = () => {
                 e.preventDefault();
               }}
             >
-              <div className="mb-3">
-                <TextField
-                  fullWidth
-                  label={t("tasks.taskLabel")}
-                  name="board"
-                  inputProps={{ inputProps: { dir: "rtl" } }}
-                />
-              </div>
+              <TextField
+                fullWidth
+                label={t("tasks.taskLabel")}
+                name="board"
+                inputProps={{ inputProps: { dir: "rtl" } }}
+              />
 
-              <div className="text-center mt-3">
-                <button type="submit" className="btn btn-lg btn-primary">
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  "& > *": {
+                    m: 1,
+                  },
+                }}
+              >
+                <Button
+                  variant="contained"
+                  endIcon={<SendIcon />}
+                  type="submit"
+                >
                   {t("tasks.addTask")}
-                </button>
-              </div>
+                </Button>
+              </Box>
             </form>
           </div>
         </div>

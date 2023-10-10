@@ -68,35 +68,32 @@ export const TaskForm = ({ board, idBoard }) => {
               ref.current.value = "";
             }}
           >
-            <div className="mb-3">
-              <TextField
-                fullWidth
-                label={t("tasks.taskLabel")}
-                variant="standard"
-                name="task"
-                ref={ref}
-              />
-            </div>
+            <TextField
+              fullWidth
+              label={t("tasks.taskLabel")}
+              variant="standard"
+              name="task"
+              ref={ref}
+            />
 
-            <div className="text-center mt-3">
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  "& > *": {
-                    m: 1,
-                  },
-                }}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                "& > *": {
+                  m: 1,
+                },
+              }}
+            >
+              <ButtonGroup
+                orientation="vertical"
+                aria-label="vertical contained button group"
+                variant="contained"
               >
-                <ButtonGroup
-                  orientation="vertical"
-                  aria-label="vertical contained button group"
-                  variant="contained"
-                >
-                  {buttons}
-                </ButtonGroup>
-              </Box>
-            </div>
+                {buttons}
+              </ButtonGroup>
+            </Box>
+
             <ul>
               <div style={divStyle}>
                 {state.task
