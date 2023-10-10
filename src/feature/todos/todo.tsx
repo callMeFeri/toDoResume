@@ -32,7 +32,7 @@ export const ToDo = () => {
               >
                 <TextField
                   fullWidth
-                  label={t("tasks.taskLabel")}
+                  label={t("tasks.addBoard")}
                   name="board"
                   style={{ paddingRight: 2, paddingLeft: 2 }}
                 />

@@ -46,6 +46,7 @@
     "placeHolder":"Buy breakfast",
     "done":"Done",
     "edit":"Edit",
+    "addBoard":"Enter your board name",
     "remove":"Remove"
  },
  "allBoards":{
