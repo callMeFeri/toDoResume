@@ -1,6 +1,6 @@
 import { useGlobalContext } from "../../../context/context-state";
 import { useTranslation } from "react-i18next";
-import { CSSProperties, useRef } from "react";
+import { CSSProperties } from "react";
 import { useState } from "react";
 import editLogo from "../../../assets/images/edit+options+pen+pencil+tool+write+icon-1320162308955248227.svg";
 import doneLogo from "../../../assets/images/checkmark+circle+complete+done+filled+ok+icon-1320184293398883601.svg";
@@ -33,7 +33,6 @@ export const TaskForm = ({ board, idBoard }) => {
     handleCheck,
   } = useGlobalContext();
   const { t } = useTranslation();
-  const ref = useRef(null);
   const [value, setValue] = useState("");
   const divStyle: CSSProperties = {
     padding: 5,
@@ -54,7 +53,7 @@ export const TaskForm = ({ board, idBoard }) => {
                 content: e.target.task.value,
                 category: board,
               });
-              ref.current.value = "";
+              e.target.task.value = "";
             }}
           >
             <Box
@@ -72,15 +71,14 @@ export const TaskForm = ({ board, idBoard }) => {
                 label={t("tasks.taskLabel")}
                 variant="standard"
                 name="task"
-                ref={ref}
               />
               <Fab
-                size="medium"
+                size="large"
                 color="secondary"
                 aria-label="add"
                 type="submit"
               >
-                <AddIcon>{t("tasks.addTask")}</AddIcon>
+                <AddIcon />
               </Fab>
               <IconButton
                 aria-label="delete"

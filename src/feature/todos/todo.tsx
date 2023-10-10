@@ -19,6 +19,7 @@ export const ToDo = () => {
               onSubmit={(e) => {
                 addBoard(e.target.board.value);
                 e.preventDefault();
+                e.target.board.value = "";
               }}
             >
               <Box
