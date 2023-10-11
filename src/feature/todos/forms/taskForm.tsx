@@ -110,7 +110,7 @@ export const TaskForm = ({ board, idBoard }) => {
                         if (category === board) {
                           return (
                             <div>
-                              <li>
+                              <dl>
                                 {isEditing ? (
                                   <>
                                     <form
@@ -208,7 +208,7 @@ export const TaskForm = ({ board, idBoard }) => {
                                           onClick={() => remove(id)}
                                         />
                                       </a>
-                                      {state.boards.length > 1 ? (
+                                      {state.boards.length > 1 && (
                                         <>
                                           <FormControl
                                             variant="filled"
@@ -235,7 +235,7 @@ export const TaskForm = ({ board, idBoard }) => {
                                                   return (
                                                     <>
                                                       <MenuItem
-                                                        onClick={(e) =>
+                                                        onClick={() =>
                                                           changePlace({
                                                             id: id,
                                                             type: item.title,
@@ -252,13 +252,11 @@ export const TaskForm = ({ board, idBoard }) => {
                                             </Select>
                                           </FormControl>
                                         </>
-                                      ) : (
-                                        ""
                                       )}
                                     </div>
                                   </>
                                 )}
-                              </li>
+                              </dl>
                             </div>
                           );
                         }
