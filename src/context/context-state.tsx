@@ -56,7 +56,7 @@ let initialState: initState = {
 export const AppProvider = ({ children }: child) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { i18n } = useTranslation();
-  const saveLocal = () => {
+  const saveLocal = (): Omit<initState, "language" | "showSideBar"> => {
     const { language, showSideBar, ...newState } = state;
     return newState;
   };
@@ -91,7 +91,7 @@ export const AppProvider = ({ children }: child) => {
   const removeBoard = (idBoard: string) => {
     dispatch({ type: "REMOVE-BOARD", id: idBoard });
   };
-  const edit = (id) => {
+  const edit = (id: string) => {
     dispatch({ type: "EDIT", id: id });
   };
   const editDone = ({ id, content }: { id: string; content: string }) => {
@@ -106,7 +106,7 @@ export const AppProvider = ({ children }: child) => {
   const changeComponent = (cmp: string) => {
     dispatch({ type: "CHANGE-COMPONENT", add: cmp });
   };
-  const addBoard = (text) => {
+  const addBoard = (text: string): void => {
     dispatch({ type: "ADD-BOARD", text: text });
   };
   const handleCheck = ({ status, id }: { status: boolean; id: string }) => {
@@ -136,4 +136,20 @@ export const AppProvider = ({ children }: child) => {
 };
 export const useGlobalContext = () => {
   return useContext(AppContext);
+};
+
+export type GlobalContextType = {
+  state: initState;
+  changeLanguage: (language: "pe" | "en") => void;
+  showSideBar: () => void | unknown;
+  addBoard: (text: string) => void | unknown;
+  clean: () => void | unknown;
+  edit: (id: string) => void | unknown;
+  remove: (id: string) => void | unknown;
+  addTask: (data: { content: string; category: string }) => void | unknown;
+  editDone: (data: { id: string; content: string }) => void | unknown;
+  changeComponent: (cmp: string) => void | unknown;
+  removeBoard: (idBoard: string) => void | unknown;
+  changePlace: (data: { id: string; type: string }) => void | unknown;
+  handleCheck: (data: { status: boolean; id: string }) => void | unknown;
 };

@@ -1,7 +1,10 @@
-import { useGlobalContext } from "../../../context/context-state";
+import {
+  useGlobalContext,
+  GlobalContextType,
+} from "../../../context/context-state";
 import { useTranslation } from "react-i18next";
 import { CSSProperties } from "react";
-import { useState } from "react";
+import { useState, PropsWithChildren } from "react";
 import editLogo from "../../../assets/images/edit+options+pen+pencil+tool+write+icon-1320162308955248227.svg";
 import doneLogo from "../../../assets/images/checkmark+circle+complete+done+filled+ok+icon-1320184293398883601.svg";
 import removeLogo from "../../../assets/images/remove+circle+24px-131985190467137446.svg";
@@ -13,7 +16,7 @@ import TextField from "@mui/material/TextField";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import InputLabel from "@mui/material/InputLabel";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 export const formStyle: CSSProperties = {
   padding: 10,
@@ -21,7 +24,10 @@ export const formStyle: CSSProperties = {
   backgroundImage:
     "linear-gradient(to right, rgba(255,0,0,0), rgba(192, 192, 192))",
 };
-export const TaskForm = ({ board, idBoard }) => {
+export const TaskForm = ({
+  board,
+  idBoard,
+}: PropsWithChildren<{ board: string; idBoard: string }>) => {
   const {
     state,
     addTask,
@@ -31,7 +37,7 @@ export const TaskForm = ({ board, idBoard }) => {
     removeBoard,
     changePlace,
     handleCheck,
-  } = useGlobalContext();
+  }: GlobalContextType = useGlobalContext();
   const { t } = useTranslation();
   const [value, setValue] = useState("");
   const divStyle: CSSProperties = {
@@ -47,13 +53,13 @@ export const TaskForm = ({ board, idBoard }) => {
         <div className="m-sm-4">
           <form
             style={formStyle}
-            onSubmit={(e) => {
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
               e.preventDefault();
               addTask({
-                content: e.target.task.value,
+                content: e.currentTarget.task.value,
                 category: board,
               });
-              e.target.task.value = "";
+              e.currentTarget.task.value = "";
             }}
           >
             <Box
@@ -168,13 +174,17 @@ export const TaskForm = ({ board, idBoard }) => {
                                       <p
                                         style={{
                                           textDecoration: isChecked
-                                            ? " line-through"
+                                            ? "line-through"
                                             : "",
                                           letterSpacing: "1px",
                                           color: isChecked ? "red" : "black",
                                           fontFamily: "OCR A Std, monospace",
-                                          fontStyle: isChecked && "italic",
-                                          fontWeight: !isChecked && "bold",
+                                          fontStyle: isChecked
+                                            ? "italic"
+                                            : "normal",
+                                          fontWeight: isChecked
+                                            ? "normal"
+                                            : "bold",
                                         }}
                                       >
                                         {content}
