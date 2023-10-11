@@ -33,6 +33,7 @@ export const ToDo = () => {
                 <TextField
                   fullWidth
                   label={t("tasks.addBoard")}
+                  variant="standard"
                   name="board"
                   style={{ paddingRight: 2, paddingLeft: 2 }}
                 />
@@ -41,6 +42,9 @@ export const ToDo = () => {
                   color="secondary"
                   aria-label="add"
                   type="submit"
+                  sx={{
+                    background: "blue",
+                  }}
                 >
                   <AddIcon />
                 </Fab>
