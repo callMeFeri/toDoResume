@@ -8,7 +8,10 @@ export const Sidebar = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <nav className={`sidebar ${state.showSideBar ? " " : "collapsed"}`}>
+    <nav
+      className={`sidebar  ${state.showSideBar ? " " : "collapsed"}`}
+      style={{ position: "fixed" }}
+    >
       <div>
         <a className="sidebar-brand d-flex flex-column align-items-center pt-0 mb-0">
           <img src={logo} style={{ height: "280px", width: "280px" }} />
