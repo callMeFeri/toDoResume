@@ -119,21 +119,25 @@ export const TaskForm = ({ board, idBoard }) => {
                                         editDone({ id: id, content: value });
                                       }}
                                     >
-                                      <input
-                                        type="text"
+                                      <TextField
                                         value={value}
+                                        variant="standard"
+                                        label={t("tasks.editTask")}
                                         onChange={(e) =>
                                           setValue(e.target.value)
                                         }
-                                        className={`form-control form-control-lg `}
                                       />
+
                                       <a>
                                         <img
                                           src={doneLogo}
                                           alt={t("tasks.done")}
                                           style={{
-                                            height: "20px",
-                                            width: "20px",
+                                            height: "30px",
+                                            width: "30px",
+                                            marginTop: "20px",
+                                            paddingRight: 5,
+                                            paddingLeft: 5,
                                           }}
                                           onClick={() => {
                                             editDone({
@@ -222,8 +226,8 @@ export const TaskForm = ({ board, idBoard }) => {
                                               id={id}
                                               value={category}
                                               sx={{
-                                                maxHeight: "30px",
-                                                marginBottom: "8px",
+                                                maxHeight: "20px",
+                                                marginTop: "5px",
                                               }}
                                             >
                                               {state.boards.map(

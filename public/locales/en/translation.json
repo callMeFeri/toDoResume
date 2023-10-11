@@ -47,7 +47,8 @@
     "done":"Done",
     "edit":"Edit",
     "addBoard":"Enter your board name",
-    "remove":"Remove"
+    "remove":"Remove",
+    "editTask":"Edit you task:"
  },
  "allBoards":{
     "hi":"Hi There Boss!"
