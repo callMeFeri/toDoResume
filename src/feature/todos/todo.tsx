@@ -42,7 +42,7 @@ export const ToDo = () => {
                   aria-label="add"
                   type="submit"
                 >
-                  <AddIcon>{t("tasks.addTask")}</AddIcon>
+                  <AddIcon />
                 </Fab>
               </Box>
             </form>

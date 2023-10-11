@@ -61,9 +61,6 @@ export const TaskForm = ({ board, idBoard }) => {
                 display: "flex",
                 justifyContent: "center",
                 minWidth: "40px",
-                "& > *": {
-                  m: 1,
-                },
               }}
             >
               <TextField
@@ -88,7 +85,7 @@ export const TaskForm = ({ board, idBoard }) => {
                 aria-label="delete"
                 size="large"
                 onClick={() => removeBoard(idBoard)}
-                sx={{ marginBottom: 8 }}
+                sx={{ marginBottom: 2 }}
               >
                 <DeleteIcon fontSize="inherit" />
               </IconButton>
@@ -104,6 +101,7 @@ export const TaskForm = ({ board, idBoard }) => {
                         category: string;
                         id: string;
                         isEditing: boolean;
+                        isChecked: boolean;
                       }) => {
                         const { content, category, id, isEditing, isChecked } =
                           item;
