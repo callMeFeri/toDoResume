@@ -1,5 +1,5 @@
 import logo from "../../../../assets/images/logo.svg";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { ReactNode, useEffect } from "react";
 import { httpService } from "../../../../core/http-service";
 import { useTranslation } from "react-i18next";
@@ -27,7 +27,7 @@ const Register = () => {
 
   const submitForm = useSubmit();
 
-  const onSubmit = (data: data): void => {
+  const onSubmit: SubmitHandler<data> = (data) => {
     const { confirmPassword, ...userData } = data;
     submitForm(userData, { method: "post" });
   };

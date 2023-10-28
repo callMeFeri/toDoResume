@@ -19,7 +19,7 @@ export const LogIn = (): JSX.Element => {
   const isSuccessed: boolean = useActionData();
   const { t } = useTranslation();
 
-  const onSubmit = (data: string) => {
+  const onSubmit = (data: FormData) => {
     submitForm(data, { method: "post" });
     console.log("data", data);
   };
