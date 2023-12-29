@@ -1,5 +1,5 @@
 import logo from "../../../../assets/images/logo.svg";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { ReactNode, useEffect } from "react";
 import { httpService } from "../../../../core/http-service";
 import { useTranslation } from "react-i18next";
@@ -10,12 +10,7 @@ import {
   useNavigation,
   useSubmit,
 } from "react-router-dom";
-
-type data = {
-  mobile: string;
-  password: string;
-  confirmPassword: string;
-};
+import { AnyZodObject, ZodObject } from "zod";
 
 const Register = () => {
   const {
@@ -27,10 +22,6 @@ const Register = () => {
 
   const submitForm = useSubmit();
 
-  const onSubmit: SubmitHandler<data> = (data) => {
-    const { confirmPassword, ...userData } = data;
-    submitForm(userData, { method: "post" });
-  };
   const isSuccessed: boolean | ReactNode | unknown = useActionData();
   const navigation = useNavigation();
   const isSubmiting: boolean = navigation.state !== "idle";
@@ -41,7 +32,7 @@ const Register = () => {
     if (isSuccessed) {
       setTimeout(() => navigate("../login"), 1000);
     }
-  }, [isSuccessed]);
+  }, [isSuccessed, navigate]);
 
   const { t } = useTranslation();
   return (
@@ -61,7 +52,12 @@ const Register = () => {
       <div className="card">
         <div className="card-body">
           <div className="m-sm-4">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form
+              onSubmit={handleSubmit((data) => {
+                const { confirmPassword, ...userData } = data;
+                submitForm(userData, { method: "post" });
+              })}
+            >
               <div className="mb-3">
                 <label className="form-label">{t("register.mobile")}</label>
                 <input
@@ -158,7 +154,8 @@ const Register = () => {
 };
 export default Register;
 
-export async function registerAction({ request }) {
+// eslint-disable-next-line react-refresh/only-export-components
+export async function registerAction({ request }: any) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   type responseApi = {
@@ -169,7 +166,6 @@ export async function registerAction({ request }) {
     mobile: data.mobile,
     password: data.password,
   };
-  const finalData = JSON.stringify(memberShip);
 
   const response = await httpService.post("Users", memberShip);
   return response.status === 200;

@@ -16,13 +16,9 @@ export const LogIn = (): JSX.Element => {
   const submitForm = useSubmit();
   const navigation = useNavigation();
   const isSubmiting: boolean = navigation.state !== "idle";
-  const isSuccessed: boolean = useActionData();
+  const isSuccessed: boolean | unknown = useActionData();
   const { t } = useTranslation();
 
-  const onSubmit = (data: FormData) => {
-    submitForm(data, { method: "post" });
-    console.log("data", data);
-  };
   return (
     <>
       <div className="text-center mt-4">
@@ -40,7 +36,11 @@ export const LogIn = (): JSX.Element => {
       <div className="card">
         <div className="card-body">
           <div className="m-sm-4">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form
+              onSubmit={handleSubmit((data) => {
+                submitForm(data, { method: "post" });
+              })}
+            >
               <div className="mb-3">
                 <label className="form-label">{t("register.mobile")}</label>
                 <input
@@ -115,6 +115,7 @@ export const LogIn = (): JSX.Element => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export async function logInAction({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
