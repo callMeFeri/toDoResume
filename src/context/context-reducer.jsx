@@ -1,8 +1,5 @@
-type action = {
-  type: string;
-  language: "pe" | "en";
-};
-export const reducer = (state: [], action: action) => {
+
+export const reducer = (state, action) => {
   if (action.type === "CHANGE-LANGUAGE") {
     return { ...state, language: action.language };
   }
