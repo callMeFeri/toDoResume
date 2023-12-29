@@ -19,13 +19,13 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+// eslint-disable-next-line react-refresh/only-export-components
 export const formStyle: CSSProperties = {
   padding: 10,
   borderRadius: "0px 9px 9px 0px",
   backgroundImage:
     "linear-gradient(to right, rgba(255,0,0,0), rgba(192, 192, 192))",
 };
-const currentLanguage: string | null = localStorage.getItem("language");
 const theme = createTheme({
   direction: "rtl",
 });
@@ -42,7 +42,7 @@ export const TaskForm = ({
     removeBoard,
     changePlace,
     handleCheck,
-  }: GlobalContextType = useGlobalContext();
+  } = useGlobalContext() as GlobalContextType;
   const { t } = useTranslation();
   const [value, setValue] = useState("");
   const divStyle: CSSProperties = {
@@ -257,19 +257,22 @@ export const TaskForm = ({
                                                 }}
                                               >
                                                 {state.boards.map(
-                                                  (item: { title: string }) => {
+                                                  (board: {
+                                                    title: string;
+                                                    id?: string;
+                                                  }) => {
                                                     return (
                                                       <>
                                                         <MenuItem
                                                           onClick={() =>
                                                             changePlace({
                                                               id: id,
-                                                              type: item.title,
+                                                              type: board.title,
                                                             })
                                                           }
-                                                          value={item.title}
+                                                          value={board.title}
                                                         >
-                                                          {item.title}
+                                                          {board.title}
                                                         </MenuItem>
                                                       </>
                                                     );

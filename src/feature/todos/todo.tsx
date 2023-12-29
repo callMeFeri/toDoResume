@@ -56,8 +56,8 @@ export const ToDo = () => {
       <div>
         <ol>
           {state.boards
-            ? state.boards.map((board: string) => {
-                const { title, id }: { title: string; id: string } = board;
+            ? state.boards.map((board: { title: string; id: string }) => {
+                const { title, id } = board;
                 return (
                   <div>
                     <hr />
