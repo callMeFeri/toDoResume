@@ -46,6 +46,7 @@ export const AppProvider = ({ children }) => {
   const { i18n } = useTranslation();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const saveLocal = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { language, showSideBar, ...newState } = state;
     return newState;
   };
