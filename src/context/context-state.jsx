@@ -52,14 +52,19 @@ export const AppProvider = ({ children }) => {
   };
   useEffect(() => {
     i18n.changeLanguage(state.language);
+    
     localStorage.setItem("language", state.language);
+
     document.body.dataset.direction = state.language === "pe" ? "rtl" : "ltr";
+
     document.body.dataset.sidebarPosition =
       state.language === "pe" ? "right" : "left";
   }, [i18n, state.language]);
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(saveLocal()));
   }, [saveLocal, state]);
+
   const changeLanguage = (language) => {
     dispatch({ type: "CHANGE-LANGUAGE", language: language });
   };

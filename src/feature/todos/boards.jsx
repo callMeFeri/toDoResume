@@ -1,12 +1,9 @@
-import {
-  useGlobalContext,
-  GlobalContextType,
-} from "../../context/context-state";
+import { useGlobalContext} from "../../context/context-state";
 import { useTranslation } from "react-i18next";
 
 export const Boards = () => {
   const { t } = useTranslation();
-  const { state } = useGlobalContext() as GlobalContextType;
+  const { state } = useGlobalContext()
 
   return (
     <>
@@ -15,7 +12,7 @@ export const Boards = () => {
           <div>
             <h1>{t("allBoards.hi")}</h1>
             {state.boards.map(
-              (board: { id: string; title: string }): JSX.Element => (
+              (board ) => (
                 <li key={board.id}>{board.title}</li>
               )
             )}

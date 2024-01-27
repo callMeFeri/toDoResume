@@ -3,7 +3,7 @@ import {
   GlobalContextType,
 } from "../../../context/context-state";
 import { useTranslation } from "react-i18next";
-import { CSSProperties, useEffect } from "react";
+import { CSSProperties } from "react";
 import { useState, PropsWithChildren } from "react";
 import editLogo from "../../../assets/images/edit+options+pen+pencil+tool+write+icon-1320162308955248227.svg";
 import doneLogo from "../../../assets/images/checkmark+circle+complete+done+filled+ok+icon-1320184293398883601.svg";
